@@ -10,18 +10,65 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="d-flex flex-column justify-content-start align-items-center bg-dark">
-  <nav class="w-50 mt-4 d-flex justify-content-between">
-    <a href="trazado.html">Trazado</a>
-    <a href="animacion.html">Animación</a>
-    <a href="colisiones.html">Colisiones</a>
-    <a href="imagenes.html">Imágenes</a>
-  </nav>
-  <h1 class="text-light my-5">Canvas | <small class="text-muted">Imágenes</small> </h1>
-  <div class="v-100 d-flex flex-column justify-content-around align-items-center">
-    <button class="mb-5 btn btn-info" onclick="crearRectangulos(1)">AGREGAR RECTÁNGULO</button>
+<body class="d-flex flex-column justify-content-between bg-dark">
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-purple">
+      <a class="navbar-brand" href="index.html">
+        <img class="d-none d-md-inline" src="img/logo.png" alt="logo">
+        <img class="d-inline d-md-none" src="img/isologo.png" alt="logo">
+      </a>
+      <span class="navbar-text">Intro a API canvas</span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu"
+        aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a class="nav-link" href="trazado.html">Trazado </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="animacion.html">Animación</a>
+
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="colisiones.html">Colisiones <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="imagenes.html">Imágenes</a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+  </header>
+  <main class="flex-grow-1 d-flex flex-column justify-content-start align-items-center mb-2">
+    <h1 class="text-light my-5">Canvas | <small class="text-muted">Imágenes</small> </h1>
+    <!-- Empieza el contenido -->
+
     <canvas id="imagenes"></canvas>
-  </div>
+
+  </main>
+
+  <footer class="footer text-center font-weight-bold p-3 bg-cyan text-dark container-fluid">
+    <div class="row justify-content-around">
+      <span class="col-12 col-md-4 mb-3 mb-md-0">Copyright &copy; 2020 </span>
+      <span class="col-6 col-md-4"><a class="text-white" href="http://github.com/brankohbk/canvas-intro" target="_blank"
+          rel="noopener noreferrer">Source code<img src="img/GitHub-Mark-32px.png" alt="Github" class="mx-2"></a></span>
+      <span class="col-6 col-md-4">
+        Hecho con
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="red"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+        </svg>
+        por <br class="d-inline d-md-none">
+        <a class="text-white" target="_blank" rel="no-opener no-referrer" href="https://github.com/brankohbk">Branko
+          Haberkon</a>
+      </span>
+    </div>
+
+  </footer>
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

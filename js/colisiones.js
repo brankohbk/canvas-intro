@@ -1,10 +1,4 @@
 // Función auxiliar.
-
-// Convertir grados en radianes.
-function degToRad(deg) {
-  return deg * Math.PI / 180;
-}
-
 // Obtener un número aleatorio entre 2 números.
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;

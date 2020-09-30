@@ -11,101 +11,95 @@ function getRandomInt(min, max) {
 }
 
 // Referenciar el elemento <canvas> y definir contexto y dimensiones.
-let canvas = document.getElementById("trazado") ;
+let canvas = document.getElementById("trazado");
 let ctx = canvas.getContext("2d");
 canvas.height = window.innerHeight * 0.5;
 canvas.width = window.innerWidth * 0.7;
 
-// Definir la clase Rectangulo para instanciar objetos.
-class Rectangulo {
-  constructor(x, y, ancho, alto, color) {
-    // Propiedades
-    this.x = x;
-    this.y = y;
-    this.ancho = ancho;
-    this.alto = alto;
-    this.color = color;
-    this.aceleracion = 0.05;
-    this.speedY = getRandomInt(1,7);
-    this.speedX = getRandomInt(1,7);
 
-    // Metodos  
-    this.checkBorders = function () {
-      // Al chocar con un borde, cambiar la dirección.
-      if (this.y + this.alto > canvas.height || this.y < 0) {
-        this.speedY = -this.speedY;
-      }
-      if (this.x + this.ancho > canvas.width || this.x < 0) {
-        this.speedX *= -1;
-      }
 
-      // Al cambiar el tamaño del canvas con resizeCanvas(), 
-      // verificar que no quede afuera del mismo.
-      if (this.y + this.alto > canvas.height) {
-        this.y = canvas.height - this.alto;
-      }
-      if (this.y < 0) {
-        this.y = 0;
-      }
+function draw() {
+  // Trazar una línea desde el centro del canvas.
+  ctx.strokeStyle = "red";
+  ctx.moveTo(canvas.width / 2, canvas.height / 2);
+  ctx.lineTo(120, 340);
+  ctx.stroke();
 
-      if (this.x + this.ancho > canvas.width) {
-        this.x = canvas.width - this.ancho;
-      }
-      if (this.x < 0) {
-        this.x = 0;
-      }
+  // Dibujar un triángulo azulado en un aubicación específica.
+  ctx.beginPath();
+  ctx.moveTo(100, 200);
+  ctx.lineTo(100, 300);
+  ctx.lineTo(150, 300);
+  ctx.closePath();
+  ctx.stroke();
+  ctx.fillStyle = "#27a6e5";
+  ctx.fill();
 
-    };
-    this.newPosition = function () {
-      // Calcular la nueva posición en base a la velocidad del objeto.
-      this.y += this.speedY;
-      this.x += this.speedX;
-    };
-    this.draw = function () {
-      // Dibujar este objeto
-      this.checkBorders();
-      ctx.fillStyle = this.color;
-      ctx.fillRect(this.x, this.y, this.ancho, this.alto);
-      this.newPosition();
-    };
+  // Dibujar un triángulo anaranjado cerca del azulado.
+  ctx.beginPath();
+  ctx.moveTo(120, 200);
+  ctx.lineTo(170, 200);
+  ctx.lineTo(170, 300);
+  ctx.closePath();
+  ctx.stroke();
+  ctx.fillStyle = "#fd7e14";
+  ctx.fill();
 
+  // Dibujar un arco.
+  for(var i=0;i<4;i++){
+    for(var j=0;j<3;j++){
+      ctx.beginPath();
+      var x              = 25+j*50;               // Coordenada x
+      var y              = 25+i*50;               // Coordenada y
+      var radius         = 20;                    // Radio del arco
+      var startAngle     = 0;                     // Punto inicial del círculo
+      var endAngle       = Math.PI+(Math.PI*j)/2; // Punto final del círculo
+      var anticlockwise  = i%2==0 ? false : true; // Sentido de las manecillas del reloj y contrario a ellas
+
+      ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);
+
+      if (i>1){
+        ctx.fill();
+      } else {
+        ctx.stroke();
+      }
+    }
   }
+
+
+  // Dibujar un curva cuadrática.
+  ctx.beginPath();
+  ctx.moveTo(75 + canvas.width / 2, 25);
+  ctx.quadraticCurveTo(25 + canvas.width / 2, 25, 25 + canvas.width / 2, 62.5);
+  ctx.quadraticCurveTo(25 + canvas.width / 2, 100, 50 + canvas.width / 2, 100);
+  ctx.quadraticCurveTo(50 + canvas.width / 2, 120, 30 + canvas.width / 2, 125);
+  ctx.quadraticCurveTo(60 + canvas.width / 2, 120, 65 + canvas.width / 2, 100);
+  ctx.quadraticCurveTo(125 + canvas.width / 2, 100, 125 + canvas.width / 2, 62.5);
+  ctx.quadraticCurveTo(125 + canvas.width / 2, 25, 75 + canvas.width / 2, 25);
+  ctx.stroke();
+
+  // Dibujar un curva bezier.
+  ctx.beginPath();
+  ctx.moveTo(75+ canvas.width / 2,40 + canvas.height / 2);
+  ctx.bezierCurveTo(75+ canvas.width / 2,37 + canvas.height / 2,70+ canvas.width / 2,25 + canvas.height / 2,50+ canvas.width / 2,25 + canvas.height / 2);
+  ctx.bezierCurveTo(20+ canvas.width / 2,25 + canvas.height / 2,20+ canvas.width / 2,62.5 + canvas.height / 2,20+ canvas.width / 2,62.5 + canvas.height / 2);
+  ctx.bezierCurveTo(20+ canvas.width / 2,80 + canvas.height / 2,40+ canvas.width / 2,102 + canvas.height / 2,75+ canvas.width / 2,120 + canvas.height / 2);
+  ctx.bezierCurveTo(110+ canvas.width / 2,102 + canvas.height / 2,130+ canvas.width / 2,80 + canvas.height / 2,130+ canvas.width / 2,62.5 + canvas.height / 2);
+  ctx.bezierCurveTo(130+ canvas.width / 2,62.5 + canvas.height / 2,130+ canvas.width / 2,25 + canvas.height / 2,100+ canvas.width / 2,25 + canvas.height / 2);
+  ctx.bezierCurveTo(85+ canvas.width / 2,25 + canvas.height / 2,75+ canvas.width / 2,37 + canvas.height / 2,75+ canvas.width / 2,40 + canvas.height / 2);
+  ctx.fill();
+
+  // Dibujar un logo.
+
 }
 
+draw();
 
-
-let rectangulos = []
-let rojo = new Rectangulo(0, 0, 57, 37, "red")
-let verde = new Rectangulo(0, 340, 30, 30, "#94d1be")
-
-
-function crearRectangulos(cantidad) {
-  let i = 1;
-  while (i <= cantidad) {
-    let x = getRandomInt(0,canvas.width) ;
-    let y = getRandomInt(0,canvas.height);
-    let ancho = getRandomInt(20,60);
-    let alto = getRandomInt(20,60);
-    let color = `hsl(${getRandomInt(1,360)}, 100%, 50%`
-    rectangulos.push(new Rectangulo(x, y, ancho, alto, color))
-    i++
-  }
-}
-
-
-function update() {
-  //Limpiar el canvas y volver a dibujar los rectángulos. 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  rectangulos.forEach(rectangulo => rectangulo.draw())
-}
 
 function resizeCanvas() {
   // Redimensionar el canvas para que mantenga la proporción con respecto a la ventana.
   canvas.height = window.innerHeight * 0.5;
   canvas.width = window.innerWidth * 0.7;
+  draw();
 }
 window.addEventListener("resize", resizeCanvas);
-
-// Iniciar la animación.
-// Se llama a la funcion update() 60 veces en 1000 milisegundos.
-const interval = setInterval(update, 1000 / 60);
