@@ -1,0 +1,28 @@
+/* ESTILOS GENERALES */
+.bg-orange {
+  background-color: var(--orange);
+}
+.bg-purple{
+  background-color: var(--purple);
+}
+.bg-teal{
+  background-color: var(--teal);
+}
+.bg-cyan{
+  background-color: var(--cyan);
+}
+body {
+  min-height: 100vh;
+}
+.navbar-brand img {
+  max-height: 60px;
+}
+main {
+  min-height: 50vh;
+}
+
+canvas{
+  background-color: #DAF0EE;
+  border-radius: 0.5em;
+}
+
