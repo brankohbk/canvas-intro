@@ -13,7 +13,7 @@ function getRandomInt(min, max) {
 // Referenciar el elemento <canvas> y definir contexto y dimensiones.
 let canvas = document.getElementById("animacion") ;
 let ctx = canvas.getContext("2d");
-canvas.height = window.innerHeight * 0.5;
+canvas.height = window.innerHeight * 0.6;
 canvas.width = window.innerWidth * 0.7;
 
 // Definir la clase Rectangulo para instanciar objetos.
@@ -101,7 +101,7 @@ function update() {
 
 function resizeCanvas() {
   // Redimensionar el canvas para que mantenga la proporción con respecto a la ventana.
-  canvas.height = window.innerHeight * 0.5;
+  canvas.height = window.innerHeight * 0.6;
   canvas.width = window.innerWidth * 0.7;
 }
 window.addEventListener("resize", resizeCanvas);

@@ -4,6 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <title>Canvas Intro</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -48,10 +51,104 @@
     </nav>
   </header>
   <main class="flex-grow-1 d-flex flex-column justify-content-start align-items-center mb-2">
-    <h1 class="text-light my-5">Canvas | <small class="text-muted">Introducción</small> </h1>
+    <h1 class="text-light my-3">Canvas | <small class="text-muted">Introducción</small> </h1>
     <!-- Empieza el contenido -->
-
-
+    <div class="accordion w-100 w-md-75" id="accordionIndex">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            <button class="font-weight-bold btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              ¿Qué es CANVAS?
+            </button>
+          </h2>
+        </div>
+    
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionIndex">
+          <div class="card-body">
+            <p class="card-text">La API Canvas provee los medios para dibujar gráficos mediante Javascript y el elemento HTML <code> &lt;canvas&gt;</code>.</p>
+            <p class="card-text">Entre otras cosas, se puede utilizar para realizar animaciones, videojuegos, visualización de datos y procesamiento de video en tiempo real.</p>
+            <p class="card-text">La API Canvas se enfoca principalmente en gráficos en 2 dimensiones. La API WebGL también utiliza el elemento HTML <code> &lt;canvas&gt;</code>, pero se emplea para dibujar gráficos en 2D y 3D con aceleración por hardware.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h2 class="mb-0">
+            <button class="font-weight-bold btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              ¿A quién está dirigido este recurso?
+            </button>
+          </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionIndex">
+          <div class="card-body">
+            <p class="card-text">Si bien este sitio es parte de un curso introductorio de <code> &lt;canvas&gt;</code>, se requieren conocimientos previos de HTML5, Javascript (mínimo ES6) y manejo de DOM.</p>
+            <p class="card-text">Es aconsejable tener conocimientos sólidos de:</p>
+            <ul>
+              <li>Bucles <code>for</code> y <code>while</code>.</li>
+              <li>Funciones de orden superior (<code>forEach()</code>, <code>map()</code>). </li>
+              <li>Funciones de temporización / timming functions (<code>setInterval()</code>).</li>
+              <li>Eventos (event listeners).</li>
+              <li>Clases de JS (objetos, constructores).</li>
+              <li>Conocimientos básicos de matemática y geometría (ejes de coordenadas, ángulos).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h2 class="mb-0">
+            <button class="font-weight-bold btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              ¿Dónde puedo encontrar más ejemplos?
+            </button>
+          </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionIndex">
+          <div class="card-body">
+            <p class="card-text">En internet hay muchos recursos y documentación sobre este tema.</p>
+            <p class="card-text">Los más completos y confiables son:</p>
+            <ul class="list-group mb-3">              
+              <li class="list-group-item"><a class="d-block" href="https://www.w3schools.com/graphics/canvas_intro.asp" target="_blank" rel="noopener noreferrer">W3Schools</a></li>
+              <li class="list-group-item"><a class="d-block" href="https://developer.mozilla.org/es/docs/Web/HTML/Canvas" target="_blank" rel="noopener noreferrer">Mozilla Developer Network</a></li>
+            </ul>
+          </div>
+        </div>        
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingFour">
+          <h2 class="mb-0">
+            <button class="font-weight-bold btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              Otros recursos externos:
+            </button>
+          </h2>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionIndex">
+          <div class="card-body">
+            <h5>Sobre JS y requisitos previos:</h5>
+            <dl>
+              <dt>The Net Ninja | <a href="https://www.thenetninja.co.uk/" target="_blank" rel="noopener noreferrer">https://www.thenetninja.co.uk/</a></dt>
+              <dd>
+                <p class="my-0 ml-2">Con un catálogo que va desde lo básico de HTML hasta implementaciones de frameworks, el autor posee uno de los canales de Youtube más didácticos.</p>
+                <p class="my-0 ml-2">Se recomiendan los cursos de introducción a HTML, introducción a CSS e introducción a JS.</p>
+                <p class="my-0 ml-2 font-italic">Los cursos están en inglés.</p>
+              </dd>
+            
+              <dt>Wes Bos | <a href="https://www.wesbos.com/" target="_blank" rel="noopener noreferrer">https://www.wesbos.com/</a></dt>
+              <dd>
+                <p class="my-0 ml-2">Es un desarrollador y orador canadiense que se especializa en React, Node, Express, Gatsby, entre otros frameworks de JS.</p>
+                <p class="my-0 ml-2">Se recomienda realizar la serie de ejercicios "Javascript 30" para mejorar los skills en este lenguaje.</p>
+                <p class="my-0 ml-2 font-italic">Los cursos están en inglés. Algunos poseen subtítulos en varios idiomas.</p>
+              </dd>
+              <dt>Bluu Web | <a href="https://bluuweb.org/" target="_blank" rel="noopener noreferrer">https://bluuweb.org/</a></dt>
+              <dd>
+                <p class="my-0 ml-2">Para quienes no tienen un nivel de inglés muy desarrollado, existe el canal de este autor.</p>
+                <p class="my-0 ml-2">Se recomiendan los cursos de introducción a HTML, introducción a CSS e introducción a JS.</p>
+                <p class="my-0 ml-2 font-italic">Los cursos están en castellano.</p>
+              </dd>
+            </dl>
+          </div>
+        </div>        
+      </div>
+    </div>
   </main>
 
   <footer class="footer text-center font-weight-bold p-3 bg-cyan text-dark container-fluid">

@@ -2,13 +2,13 @@
 .bg-orange {
   background-color: var(--orange);
 }
-.bg-purple{
+.bg-purple {
   background-color: var(--purple);
 }
-.bg-teal{
+.bg-teal {
   background-color: var(--teal);
 }
-.bg-cyan{
+.bg-cyan {
   background-color: var(--cyan);
 }
 body {
@@ -20,10 +20,16 @@ body {
 main {
   min-height: 50vh;
 }
-
-
-canvas{
-  background-color: #DAF0EE;
-  border-radius: 0.5em;
+@media screen and (min-width:768px) {
+  .w-md-50 {
+    width: 50%!important;
+  }
+  .w-md-75 {
+    width: 75%!important;
+  }
 }
 
+canvas {
+  background-color: #daf0ee;
+  border-radius: 0.5em;
+}
