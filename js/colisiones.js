@@ -20,8 +20,8 @@ class Rectangulo {
     this.alto = alto;
     this.color = color;
     this.aceleracion = 0.05;
-    this.speedY = getRandomInt(1,7);
-    this.speedX = getRandomInt(1,7);
+    this.speedY = getRandomInt(1, 7);
+    this.speedX = getRandomInt(1, 7);
 
     // Metodos  
     this.checkBorders = function () {
@@ -62,42 +62,87 @@ class Rectangulo {
       ctx.fillRect(this.x, this.y, this.ancho, this.alto);
       this.newPosition();
     };
+  }
+}
+class Pared {
+  constructor(x, y, ancho, alto,) {
+    this.x = x;
+    this.y = y;
+    this.ancho = ancho;
+    this.alto = alto;
+    this.color = "black";
+
+    this.checkColission = function (otherObj) {
+      // Colisiones horizontales
+      if (otherObj.x + otherObj.ancho >= this.x &&  //Borde derecho contra MI borde izquierdo
+        otherObj.x <= this.x + this.ancho &&       //Borde izquierdo contra MI borde derecho
+        otherObj.y <= this.y + this.alto &&        //Verificar el alto (permitir que pase por abajo) 
+        otherObj.y + otherObj.alto >= y            //Verificar el alto (permitir que pase por arriba)
+      ) {
+        otherObj.speedX *= -1;
+      }
+
+
+      // Colisiones verticales
+      if (otherObj.y <= this.y + this.alto &&       //Borde superior contra mi borde inferior
+        otherObj.y + otherObj.alto >= this.y &&    //Borde inferior contra mi borde superior
+        otherObj.x <= this.x + this.ancho &&       //Verificar el ancho (permitir que pase por la derecha)
+        otherObj.x + otherObj.ancho >= this.x     //Verificar el ancho (permitir que pase por la izquierda)        
+      ) {
+        otherObj.speedY *= -1;
+        // otherObj.speedX *= -1;
+
+      }
+
+
+    }
+
+    this.draw = function () {
+      // Dibujar este objeto
+      ctx.fillStyle = this.color;
+      ctx.fillRect(this.x, this.y, this.ancho, this.alto);
+    };
 
   }
 }
 
+// let pared = new Pared(canvas.width / 2 - 100, canvas.height / 2 - 100, 200, 200)
+let pared = new Pared(canvas.width / 2, 80, 60, 60)
 
-
-let rectangulos = []
 let rojo = new Rectangulo(0, 0, 57, 37, "red")
-let verde = new Rectangulo(0, 340, 30, 30, "#94d1be")
+let verde = new Rectangulo(canvas.width - 60, 340, 30, 30, "#94d1be")
+let rectangulos = [rojo, verde]
 
 
 function crearRectangulos(cantidad) {
   let i = 1;
   while (i <= cantidad) {
-    let x = getRandomInt(0,canvas.width) ;
-    let y = getRandomInt(0,canvas.height);
-    let ancho = getRandomInt(20,60);
-    let alto = getRandomInt(20,60);
-    let color = `hsl(${getRandomInt(1,360)}, 100%, 50%`;
+    let x = getRandomInt(0, canvas.width);
+    let y = getRandomInt(0, canvas.height);
+    let ancho = getRandomInt(20, 60);
+    let alto = getRandomInt(20, 60);
+    let color = `hsl(${getRandomInt(1, 360)}, 100%, 50%`;
     rectangulos.push(new Rectangulo(x, y, ancho, alto, color));
     i++;
   }
 }
 
-function eliminarRectangulos(cantidad){
-  rectangulos.splice(0,cantidad)
+function eliminarRectangulos(cantidad) {
+  rectangulos.splice(0, cantidad)
 }
 function resetearRectangulos() {
-  rectangulos=[];
+  rectangulos = [];
 }
 
 
 function update() {
   //Limpiar el canvas y volver a dibujar los rectángulos. 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  rectangulos.forEach(rectangulo => rectangulo.draw())
+  pared.draw();
+  rectangulos.forEach(rectangulo => {
+    rectangulo.draw();
+    pared.checkColission(rectangulo);
+  });
 }
 
 function resizeCanvas() {

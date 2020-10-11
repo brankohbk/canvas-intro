@@ -26,16 +26,13 @@ function draw() {
   ctx.translate(-canvas.width / 2, -canvas.height / 2);
   ctx.fillStyle = "purple";
   ctx.fillRect(canvas.width / 2 - 90, canvas.height / 2 - 90, 180, 180);
+  // tengo que volver a la posicion y rotacion orignal
   ctx.translate(canvas.width / 2, canvas.height / 2);
   ctx.rotate(-1 * degToRad(degs));
   ctx.translate(-canvas.width / 2, -canvas.height / 2);
   degs++
 
-
   requestAnimationFrame(draw)
 }
 draw()
-// draw(45)
-// draw(15)
-
 // setInterval(draw, 30)

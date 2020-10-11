@@ -87,8 +87,8 @@ function draw() {
   // Dibujar un curva bezier.
   // bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)
   ctx.strokeStyle = "green";  
-  const puntoInicial = {x:canvas.width * 2 / 3 ,y:canvas.height / 2};
-  const puntoControl1 = {x:(canvas.width * 2 / 3) + 25 ,y:100};
+  const puntoInicial = {x:canvas.width * 1 / 3 ,y:canvas.height / 2};
+  const puntoControl1 = {x:(canvas.width  / 2) + 25 ,y:100};
   const puntoControl2 = {x:(canvas.width * 2 / 3) + 50 ,y:200};
   const puntoFinal = {x:canvas.width * 3 / 4 ,y:canvas.height / 2};
   ctx.beginPath();
@@ -101,6 +101,7 @@ function draw() {
   
   // Dibujo sacado de MDN.
   ctx.beginPath();
+  // ctx.strokeStyle="transparent";
   ctx.moveTo(75 + canvas.width / 4, 40 + canvas.height / 2);
   ctx.bezierCurveTo(75 + canvas.width / 4, 37 + canvas.height / 2, 70 + canvas.width / 4, 25 + canvas.height / 2, 50 + canvas.width / 4, 25 + canvas.height / 2);
   ctx.bezierCurveTo(20 + canvas.width / 4, 25 + canvas.height / 2, 20 + canvas.width / 4, 62.5 + canvas.height / 2, 20 + canvas.width / 4, 62.5 + canvas.height / 2);
@@ -110,6 +111,8 @@ function draw() {
   ctx.bezierCurveTo(85 + canvas.width / 4, 25 + canvas.height / 2, 75 + canvas.width / 4, 37 + canvas.height / 2, 75 + canvas.width / 4, 40 + canvas.height / 2);
   ctx.fillStyle = "#ff0000aa";
   ctx.fill();
+  // ctx.stroke();
+
 }
 
 draw();
@@ -140,8 +143,20 @@ function handleClick(event) {
     ctx.stroke();
     isDrawing = !isDrawing;
   } else {
+    ctx.beginPath();
     canvas.style.cursor = "crosshair";
     ctx.moveTo(x, y);
     isDrawing = !isDrawing;
   }
 }
+
+// canvas.addEventListener("mousemove", e => { handleMove(e) });
+// function handleMove(event) {
+//   if (isDrawing){
+//     ctx.clearRect(0,0,canvas.width,canvas.height)
+//     const x = event.offsetX;
+//     const y = event.offsetY;
+//     ctx.lineTo(x, y);
+//     ctx.stroke();
+//   }  
+// }
