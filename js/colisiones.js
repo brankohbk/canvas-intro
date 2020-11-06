@@ -10,6 +10,14 @@ let ctx = canvas.getContext("2d");
 canvas.height = window.innerHeight * 0.6;
 canvas.width = window.innerWidth * 0.7;
 
+
+function resizeCanvas() {
+  // Redimensionar el canvas para que mantenga la proporción con respecto a la ventana.
+  canvas.height = window.innerHeight * 0.6;
+  canvas.width = window.innerWidth * 0.7;
+}
+window.addEventListener("resize", resizeCanvas);
+
 // Definir la clase Rectangulo para instanciar objetos.
 class Rectangulo {
   constructor(x, y, ancho, alto, color) {
@@ -49,28 +57,29 @@ class Rectangulo {
       }
 
     };
-    this.checkColission = function (otherObjects) {
+    this.checkCollision = function (otherObjects) {
       otherObjects.forEach( other => {
         if(other != this){
           const myLeft = this.x ;
           const myRight = this.x + this.width ;
           const myTop = this.y ;
           const myBottom = this.y + this.height ;
+          
           const otherLeft = other.x ;
           const otherRight = other.x + other.width ;
           const otherTop = other.y ;
           const otherBottom = other.y + other.height ;
-          let colide = true;
+          let collide = true;
           if(
             myLeft > otherRight ||
             myRight < otherLeft ||
             myTop > otherBottom ||
             myBottom < otherTop
             ){
-              colide = false;
+              collide = false;
             }
             
-            if(colide){
+            if(collide){
               this.speedX *= -1;
               this.speedY *= -1;
               if (this.color === "red" && other.color !== "black") {
@@ -131,16 +140,10 @@ function update() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   rectangulos.forEach(rectangulo => {
     rectangulo.draw();
-    rectangulo.checkColission(rectangulos);
+    rectangulo.checkCollision(rectangulos);
   });
 }
 
-function resizeCanvas() {
-  // Redimensionar el canvas para que mantenga la proporción con respecto a la ventana.
-  canvas.height = window.innerHeight * 0.6;
-  canvas.width = window.innerWidth * 0.7;
-}
-window.addEventListener("resize", resizeCanvas);
 
 // Iniciar la animación.
 // Se llama a la funcion update() 60 veces en 1000 milisegundos.

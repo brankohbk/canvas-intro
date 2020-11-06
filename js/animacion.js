@@ -46,5 +46,10 @@ function draw() {
 }
 
 draw();
-
+function resizeCanvas() {
+  canvas.width= window.innerWidth * 0.6;
+  canvas.height= window.innerHeight * 0.7;
+  draw();
+}
+window.addEventListener("resize",resizeCanvas);
 // setInterval(draw, 1000 / 60)
